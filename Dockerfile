@@ -18,7 +18,7 @@ ENV PORT 25565
 RUN apt update; \
     apt install -y default-jre ca-certificates-java curl; \
     echo "eula=true" > /data/eula.txt; \
-    echo "java -jar server.jar" > /data/start.sh; \
+    echo "java -jar /server.jar" > /data/start.sh; \
     chmod +x /data/start.sh; \
     curl -sL https://cdn.getbukkit.org/spigot/spigot-${MINECRAFT_VERSION}.jar -o server.jar;
 # We do the above in a single line to reduce the number of layers in our container
