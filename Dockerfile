@@ -6,6 +6,7 @@ FROM debian:stretch
 
 # Version of minecraft to download
 ENV MINECRAFT_VERSION 1.16.5
+ENV PORT 25565
 
 # Use APT (Advanced Packaging Tool) built in the Linux distro to download Java, a dependency
 # to run Minecraft.
@@ -26,7 +27,7 @@ WORKDIR /data
 VOLUME /data
 
 # Expose the container's network port: 25565 during runtime.
-EXPOSE 25565
+EXPOSE ${PORT}
 
 # Automatically accept Minecraft EULA, and start Minecraft server
 CMD echo eula=true > /data/eula.txt && java -jar /data/server.jar
