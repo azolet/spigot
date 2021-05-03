@@ -16,7 +16,7 @@ ENV MINECRAFT_VERSION 1.16.5
 # .jar file fetched from the https://cdn.getbukkit.org/spigot/spigot-1.16.5.jar
 RUN apt update; \
     apt install -y default-jre ca-certificates-java curl; \
-    curl -sL https://cdn.getbukkit.org/spigot/spigot-${MINECRAFT_VERSION}.jar -o server.jar;
+    curl -sL https://cdn.getbukkit.org/spigot/spigot-${MINECRAFT_VERSION}.jar -o /data/server.jar;
 # We do the above in a single line to reduce the number of layers in our container
 
 # Sets working directory for the CMD instruction (also works for RUN, ENTRYPOINT commands)
@@ -27,5 +27,5 @@ VOLUME /data
 # Expose the container's network port: 25565 during runtime.
 EXPOSE 25565
 
-#Automatically accept Minecraft EULA, and start Minecraft server
-CMD echo eula=true > /data/eula.txt && java -jar /server.jar
+# Automatically accept Minecraft EULA, and start Minecraft server
+CMD echo eula=true > /data/eula.txt && java -jar /data/server.jar
